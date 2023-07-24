@@ -1,0 +1,43 @@
+.bg-header {
+  background-color: #02b3e4;
+
+  .nav-bar {
+    margin: 15px 0;
+    .project-name {
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .list-catalogy {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      span {
+        margin: 0 10px;
+        color: #ffffff;
+      }
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      .cart {
+        display: flex;
+        i {
+          font-size: 1.4rem;
+          color: #ffffff;
+        }
+      }
+      .quantity {
+        background-color: rgb(233, 23, 65);
+        margin: 0 0 0 5px;
+        padding: 4px;
+        transform: translateY(-20px);
+        border-radius: 20px;
+      }
+    }
+  }
+}

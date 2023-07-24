@@ -1,0 +1,97 @@
+<div class="row mt-5">
+  <div class="col-lg-6">
+    <div class="info-cart">
+      <div class="card-deck">
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="detail">
+        <p>Backpack</p>
+        <p>$79.99</p>
+        <p-inputNumber
+          appIntegerValidation
+          [showButtons]="true"
+          inputId="stacked"
+        >
+        </p-inputNumber>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="form-group" [formGroup]="formGroup">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        pInputText
+        placeholder="(minimum 3 characters)"
+        formControlName="fullName"
+        class="input-width"
+      />
+      <span
+        class="validate"
+        *ngIf="
+          formGroup.controls.fullName.errors?.required &&
+          formGroup.controls.fullName.touched
+        "
+        >Full Name is required</span
+      >
+      <span
+        class="validate"
+        *ngIf="formGroup.controls.fullName.errors?.minlength"
+      >
+        Full Name invalid
+      </span>
+      <label for="address">Address</label>
+      <input
+        type="text"
+        id="address"
+        pInputText
+        placeholder="(minimum 6 characters)"
+        formControlName="address"
+        class="input-width"
+      />
+      <span
+        class="validate"
+        *ngIf="
+          formGroup.controls.address.errors?.required &&
+          formGroup.controls.address.touched
+        "
+        >Address is required</span
+      >
+      <span
+        class="validate"
+        *ngIf="formGroup.controls.address.errors?.minlength"
+      >
+        Address invalid
+      </span>
+      <label for="integeronly">Credit Cart Number</label>
+      <p-inputNumber
+        inputId="integeronly"
+        placeholder="(16-digit number)"
+        formControlName="creditCard"
+        class="input-width"
+      >
+      </p-inputNumber>
+      <span
+        class="validate"
+        *ngIf="
+          formGroup.controls.creditCard.errors?.required &&
+          formGroup.controls.creditCard.touched
+        "
+        >Credit card is required</span
+      >
+      <small>We'll never share your payment details with anyone else.</small>
+      <p-button
+        (click)="onSubmitForm()"
+        [disabled]="formGroup.invalid"
+        label="Submit"
+      ></p-button>
+    </div>
+  </div>
+</div>

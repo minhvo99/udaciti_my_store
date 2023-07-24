@@ -1,0 +1,19 @@
+.img-card{
+    max-width: 300px;
+    max-height: 500px;
+}
+.detail-product{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .btn-dropdown .p-dropdown.p-element{
+        margin: 20px 0;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+}

@@ -1,0 +1,17 @@
+<div class="card-deck mt-3">
+  <div class="card">
+    <a (click)="navigateToProductDetail(item)">
+      <img class="card-img-top" src="{{ item.url }}" alt="{{ item.name }}"
+    /></a>
+  </div>
+  <form class="product-info" >
+    <p>{{ item.name }}</p>
+    <p>${{ item.price }}</p>
+    <p-dropdown
+      [options]="productCount"
+      [(ngModel)]="productQuantity"
+      [ngModelOptions]="{standalone: true}"
+    ></p-dropdown>
+    <p-button label="Add to cart" (click)="addToCart(item)"></p-button>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+
+.info-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .validate{
+        color: red;
+        font-size: 12px;
+    }
+    .input-width{
+        width: 300px;
+    }
+}
