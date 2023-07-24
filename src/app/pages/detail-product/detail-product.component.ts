@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-detail-product',
   templateUrl: './detail-product.component.html',
@@ -15,6 +16,7 @@ export class DetailProductComponent  implements OnInit{
   productQuantity!: number
   products!: Product[];
   product: Product | null = null;
+  subscription!: Subscription
   
   constructor(private productService: ProductService, private route: ActivatedRoute, private cart: CartService) {}
 
@@ -34,7 +36,7 @@ export class DetailProductComponent  implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.id = Number(params.get('id'));
     })
-    this.productService.getProduct().subscribe({
+   this.subscription = this.productService.getProduct().subscribe({
       next: (res) => {
         this.products = res ?? [];
         this.product = this.getProductByID(this.id)
@@ -50,5 +52,10 @@ export class DetailProductComponent  implements OnInit{
     this.cart.add(product, this.productQuantity)
     alert(`New Item ${product.name} added to cart!`)
     window.location.reload();
+  }
+  ngOnDestroy(): void {
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
 }

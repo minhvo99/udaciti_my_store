@@ -15,7 +15,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     const cartData = localStorage.getItem("cart");
     this.cartItems = cartData !== null ? JSON.parse(cartData) : null; 
-    this.quantity  = this.cartItems.reduce((c, t1) => t1.amount + c, 0)
+    if(this.cartItems){
+      this.quantity  = this.cartItems.reduce((c, t1) => t1.amount + c, 0)
+    }
+    
   }
   
 }

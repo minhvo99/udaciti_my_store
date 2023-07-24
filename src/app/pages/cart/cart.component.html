@@ -19,7 +19,7 @@
           class="form-control"
           min="0"
           max="10"
-          (change)="selectchange(item.amount, item)"
+          (ngModelChange)="selectchange(item.amount, item)"
         />
         <p-button label="Delete" (click)="removeItem(item.id)" ></p-button>
       </div>

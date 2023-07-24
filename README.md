@@ -17,7 +17,7 @@ To install the dependencies for this project, run the following command:
 
 Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-##References
+## References
 
 1. [Bootstrap 4 Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/). 
 2. [Angular Documentation](https://angular.io/docs). 
