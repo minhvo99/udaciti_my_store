@@ -26,7 +26,7 @@ const route: Routes = [
                 component: CartComponent
             },
             {
-                path:"check-out",
+                path:"check-out/:fullName/:totalPrice",
                 component: CheckoutComponent
             }
     ]

@@ -1,1 +1,11 @@
-<p>checkout works!</p>
+<div class="row mt-5">
+   <div class="check-out">
+    <h3>Success! </h3>
+    <p>Thank you, {{fullName}}!</p>
+    <p>Your {{totalPrice  | currency: 'USD': true}} order is confirmed!</p>
+    <p>Please allow 1-2 business day(s) for shipping.</p>
+    <p-button label="Back to product list"  routerLink="/list-products" ></p-button>
+
+   </div>
+</div>
+

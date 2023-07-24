@@ -1,24 +1,27 @@
 <div class="row mt-5">
   <div class="col-lg-6">
-    <div class="info-cart">
+    <div class="info-cart" *ngFor="let item of cartItems">
       <div class="card-deck">
         <div class="card">
           <img
             class="card-img-top"
-            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            alt=""
+            src="{{ item.url }}"
+            alt="{{ item.name }}"
           />
         </div>
       </div>
       <div class="detail">
-        <p>Backpack</p>
-        <p>$79.99</p>
-        <p-inputNumber
-          appIntegerValidation
-          [showButtons]="true"
-          inputId="stacked"
-        >
-        </p-inputNumber>
+        <p>{{ item.name }}</p>
+        <p>{{ item.price | currency : "USD" : true }}</p>
+        <input
+          type="number"
+          [(ngModel)]="item.amount"
+          class="form-control"
+          min="0"
+          max="10"
+          (change)="selectchange(item.amount, item)"
+        />
+        <p-button label="Delete" (click)="removeItem(item.id)" ></p-button>
       </div>
     </div>
   </div>
@@ -88,10 +91,16 @@
       >
       <small>We'll never share your payment details with anyone else.</small>
       <p-button
-        (click)="onSubmitForm()"
+        (click)="onSubmitForm($event)"
         [disabled]="formGroup.invalid"
         label="Submit"
       ></p-button>
     </div>
   </div>
 </div>
+<h3>Total: {{ totalPrice | currency : "USD" : true }}</h3>
+<ng-template #noCart>
+  <div class="empty-cart-message">
+    Cart is Empty! Please, <a routerLink="/"> add product to cart</a>.
+  </div>
+</ng-template>

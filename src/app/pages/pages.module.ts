@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CartComponent } from './cart/cart.component';
-import { UserInfoComponent } from './cart/user-info/user-info.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
@@ -17,7 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IntegerValidationDirective } from './integer-validation.directive';
 const declarations = [
   CartComponent,
-  UserInfoComponent,
   CheckoutComponent,
   ListProductComponent,
   DetailProductComponent,

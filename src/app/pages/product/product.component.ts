@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { Product } from 'src/app/models/product';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -9,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit{
-  constructor(private router: Router) {}
+  constructor(private cart: CartService) {}
   productCount!: SelectItem[]
-  productQuantity!: string
+  productQuantity!: number
 
   @Input() item!: Product;
   ngOnInit(): void {
@@ -23,15 +24,11 @@ export class ProductComponent implements OnInit{
       {label: '5', value: 5},
     ]
   }
-  addToCart(item: Product) {
-    this.productQuantity = this.productCount.find(x => x.value === item.amount)?.label ?? '1'
-    console.log(item)
-    console.log(this.productQuantity)
-    
+  addToCart(item: Product, productQuantity: number) {
+    this.productQuantity = productQuantity
+    this.cart.add(item, this.productQuantity)
+    alert(`New Item  ${item.name} added to cart!`)
+    window.location.reload();
   }
-  navigateToProductDetail(item: Product) {
-    this.router.navigate(['/'], { queryParams: { id: item.id } });
-    console.log(item);
-    
-  } 
+
 }

@@ -1,10 +1,10 @@
-<div class="row mt-5">
+<div *ngIf="product" class="row mt-5">
   <div class="col-lg-6">
     <div class="card-deck">
       <div class="card img-card">
         <img
           class="card-img-top"
-          src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+          src={{product.url}}
           alt=""
         />
       </div>
@@ -12,22 +12,19 @@
   </div>
   <div class="col-lg-6">
     <div class="detail-product">
-    <h3 class="product-name">Backpack</h3>
-      <p class="price">$79.99</p>
+    <h3 class="product-name">{{product.name}}</h3>
+      <p class="price">{{ product.price | currency: 'USD': true}}</p>
       <p class="description">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem quam
-        ipsum, dicta quas aliquam doloribus? Perferendis dolor tempora fugiat
-        assumenda aspernatur unde. Modi mollitia dolor, eius ullam ratione
-        architecto numquam!
+        {{product.description}}
       </p>
       <p-dropdown
         [options]="productCount"
         [(ngModel)]="productQuantity"
         class="btn-dropdown"
       ></p-dropdown>
-      <p-button label="Add to cart"></p-button>
+      <p-button (click)="addToCart(product, productQuantity)" label="Add to cart"></p-button>
       <div class="back-to-product-list">
-        <a href="#"><i class="pi pi-arrow-left"></i> Back to product list</a>
+        <a routerLink="/list-products" ><i class="pi pi-arrow-left"></i> Back to product list</a>
       </div>
     </div>
   </div>
